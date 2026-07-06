@@ -48,6 +48,11 @@ impl Workspace {
 
     /// Adds a task to an existing project, or errors if the project is unknown.
     pub fn add_task(&mut self, project_id: &str, task: Task) -> Result<()> {
+        // `iter_mut()` yields *mutable* borrows so we can push into the found
+        // project; `find` returns `Option<&mut Project>`. `ok_or_else` turns the
+        // `None` (no such project) into a `CoreError`, and `?` returns early with
+        // it. In C#/Java you might do a lookup, null-check, then throw — here that
+        // whole pattern is one expression the compiler forces you to complete.
         let project = self
             .projects
             .iter_mut()
@@ -59,6 +64,8 @@ impl Workspace {
 
     /// Adds a note to an existing project, or errors if the project is unknown.
     pub fn add_note(&mut self, project_id: &str, note: Note) -> Result<()> {
+        // Same mutable-lookup-then-error pattern as `add_task` above: find the
+        // project by id, turn a missing one into `UnknownProject`, push on success.
         let project = self
             .projects
             .iter_mut()
