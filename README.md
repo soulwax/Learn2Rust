@@ -41,7 +41,7 @@ rustc --version
 cargo --version
 ```
 
-## How To Start Right Now
+## How To Start Right Now To Develop The Course - Not for Students
 
 For the moment, read these files in order:
 
