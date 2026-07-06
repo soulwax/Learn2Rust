@@ -12,6 +12,23 @@ The expected learner already knows programming through classic object-oriented o
 
 The learner may be rusty in programming in the very literal sense: a computer scientist or experienced developer who once had strong foundations, drifted away, got discouraged, or stopped building for a while, and now wants to return in full force. The curriculum should respect that background without assuming current fluency. It should rebuild momentum through quick visible wins, gentle repetition, and progressively richer challenges.
 
+## North Star Decisions
+
+These decisions should keep implementation from drifting once the repo starts growing.
+
+- [ ] Build one coherent course, not a pile of unrelated Rust exercises.
+- [ ] Use one Cargo workspace as the learner's home base.
+- [ ] Build one worthwhile application, Focus Forge, across the whole course.
+- [ ] Use chapter labs as safe sandboxes, not as replacements for the product.
+- [ ] Teach Rust through repeated vertical slices, not a long front-loaded theory phase.
+- [ ] Prefer a CLI before the GUI so the learner can practice logic, persistence, and testing with fast feedback.
+- [ ] Use `egui` / `eframe` for the GUI unless implementation proves a better Rust-native choice.
+- [ ] Keep web requests optional and late.
+- [ ] Keep embedded Rust, unsafe Rust, and advanced systems programming out of the main path.
+- [ ] Treat math as a parallel reactivation track that enriches the app.
+- [ ] Treat OOP knowledge as a bridge, then gradually move the learner into idiomatic Rust design.
+- [ ] Optimize the course for confidence, continuity, and independent rebuilding of skill.
+
 ## Repository Assumptions
 
 - [ ] The learner can clone this repository.
@@ -261,6 +278,11 @@ LearnRust/
     tasks.json
     launch.json
 
+  chapters/
+    00-setup.md
+    01-basics.md
+    02-ownership.md
+
   crates/
     focus_forge_core/
     focus_forge_cli/
@@ -312,11 +334,16 @@ LearnRust/
     compiler-errors.md
     dependencies.md
     getting-unstuck.md
+    glossary.md
     math-track.md
     oop-to-rust.md
     platform-notes.md
     testing-assignments.md
     vscode-workflow.md
+
+  examples/
+    ownership_flow.rs
+    result_flow.rs
 
   sample_data/
     demo_workspace.json
@@ -465,7 +492,132 @@ Each chapter assignment should use a predictable structure.
 - [ ] Add `docs/compiler-errors.md`.
 - [ ] Add `docs/testing-assignments.md`.
 
-## Final Audit Additions
+## Implementation Phases
+
+Build the learning environment in small releases. Each phase should leave the repo in a usable state.
+
+Phase 0: Foundation
+
+- [ ] Update `README.md` with the course promise and first-run instructions.
+- [ ] Add `rust-toolchain.toml`.
+- [ ] Add `.gitignore`.
+- [ ] Add root Cargo workspace.
+- [ ] Add `.vscode/extensions.json`, `.vscode/settings.json`, and basic tasks.
+- [ ] Add `docs/getting-unstuck.md`.
+- [ ] Add `docs/compiler-errors.md`.
+- [ ] Add the first runnable lab.
+
+Phase 1: First Feedback Loop
+
+- [ ] Create `chapters/00-setup.md`.
+- [ ] Create `assignments/ch00-setup.md`.
+- [ ] Create `labs/ch00_setup`.
+- [ ] Ensure `cargo check`, `cargo test`, and the VS Code check task work.
+- [ ] Add one intentionally broken compiler-error exercise.
+- [ ] Add one passing test so the learner sees the green path early.
+
+Phase 2: First Real Product Slice
+
+- [ ] Create `crates/focus_forge_core`.
+- [ ] Create `crates/focus_forge_cli`.
+- [ ] Add the first project summary model.
+- [ ] Add a CLI command that prints a hard-coded or sample project.
+- [ ] Add unit tests for formatting and validation.
+- [ ] Add Chapter 1 and Chapter 2 assignments.
+
+Phase 3: Durable App Core
+
+- [ ] Add domain models for projects, notes, tasks, status, priority, and tags.
+- [ ] Add persistence with JSON.
+- [ ] Add CLI commands for basic project and task workflows.
+- [ ] Add sample data and temp-file tests.
+- [ ] Add Chapters 3-8.
+
+Phase 4: Abstraction, Testing, And Refactoring
+
+- [ ] Add traits only where real boundaries exist.
+- [ ] Add fake storage for tests.
+- [ ] Add integration tests for CLI and persistence.
+- [ ] Add refactoring assignments based on code the learner has already touched.
+- [ ] Add Chapters 9-10.
+
+Phase 5: GUI Payoff
+
+- [ ] Create `crates/focus_forge_gui`.
+- [ ] Open a basic `egui` window.
+- [ ] Display real workspace data.
+- [ ] Add editing, validation feedback, and saving.
+- [ ] Add search and filters.
+- [ ] Add Chapters 11-14.
+
+Phase 6: Advanced Practical Rust
+
+- [ ] Add optional async and HTTP enrichment.
+- [ ] Add import, export, backups, settings, logging, and release builds.
+- [ ] Add capstone extensions.
+- [ ] Add Chapters 15-18.
+
+Phase 7: Curriculum Hardening
+
+- [ ] Run the course from a clean clone.
+- [ ] Time each chapter.
+- [ ] Fix unclear instructions.
+- [ ] Tighten tests that are too brittle.
+- [ ] Add CI.
+- [ ] Tag stable chapter checkpoints.
+- [ ] Decide whether to add solutions.
+
+## Risk Register
+
+- [ ] Risk: The course becomes too broad.
+- [ ] Mitigation: Keep Focus Forge small and useful; move extra ideas to capstone extensions.
+- [ ] Risk: Rust setup friction kills momentum.
+- [ ] Mitigation: Make Chapter 0 tiny, testable, and heavily supported by VS Code tasks.
+- [ ] Risk: Ownership feels like a wall.
+- [ ] Mitigation: Teach ownership in repeated small contexts before large data structures and GUI state.
+- [ ] Risk: The app architecture appears before the learner cares.
+- [ ] Mitigation: Build vertical slices first, then refactor when the pain is visible.
+- [ ] Risk: GUI work becomes too much too soon.
+- [ ] Mitigation: Delay GUI until the CLI and core model have produced confidence.
+- [ ] Risk: Math distracts from Rust.
+- [ ] Mitigation: Keep math short, parallel, and tied to app behavior.
+- [ ] Risk: Tests feel like arbitrary gates.
+- [ ] Mitigation: Make tests explain user-visible behavior and include manual verification where appropriate.
+- [ ] Risk: AI tools let learners skip understanding.
+- [ ] Mitigation: Encourage hint-seeking, explanation, code review, and reflection prompts.
+- [ ] Risk: The repo gets intimidating.
+- [ ] Mitigation: Scaffold gradually and keep the first screen of README focused on what to do next.
+
+## Naming And Convention TODO
+
+- [ ] Use consistent chapter numbering: `ch00`, `ch01`, `ch02`.
+- [ ] Use kebab-case for Markdown files, such as `ch02-ownership.md`.
+- [ ] Use snake_case for crate and lab package names, such as `ch02_ownership`.
+- [ ] Prefix lab packages clearly if Cargo package names become ambiguous, such as `lab_ch02_ownership`.
+- [ ] Keep Focus Forge crates named:
+  - [ ] `focus_forge_core`
+  - [ ] `focus_forge_cli`
+  - [ ] `focus_forge_gui`
+- [ ] Keep public API names boring and obvious.
+- [ ] Prefer domain names like `Project`, `Task`, `Note`, `Workspace`, `Storage`, and `WorkspaceError`.
+- [ ] Avoid clever abbreviations in beginner-facing code.
+
+## Chapter Dependency Contract
+
+Each chapter should state what it depends on and what it promises to leave behind.
+
+- [ ] Required starting checkpoint.
+- [ ] Files the learner is expected to edit.
+- [ ] Files the learner may read but should not need to edit.
+- [ ] Commands that should work before starting.
+- [ ] Commands that should work after finishing.
+- [ ] Product capability added.
+- [ ] Rust concept practiced.
+- [ ] OOP bridge practiced.
+- [ ] Math concept practiced.
+- [ ] Recovery checkpoint if the learner gets lost.
+
+## Operational Support TODO
 
 These are the supporting systems that can make the difference between a good curriculum idea and a learning environment that actually holds up.
 
@@ -1260,10 +1412,19 @@ Math assignment format:
 - [ ] Add a glossary for common Rust terms.
 - [ ] Add a "when the compiler is angry" guide.
 - [ ] Add a "how to ask for help" guide.
+- [ ] Add `docs/vscode-workflow.md`.
+- [ ] Add `docs/testing-assignments.md`.
+- [ ] Add `docs/dependencies.md`.
+- [ ] Add `docs/platform-notes.md`.
+- [ ] Add `docs/oop-to-rust.md`.
+- [ ] Add `docs/math-track.md`.
 
 ## Build TODO
 
 - [ ] Initialize a Cargo workspace.
+- [ ] Add `rust-toolchain.toml`.
+- [ ] Add `.gitignore`.
+- [ ] Add `.vscode/` recommendations and tasks.
 - [ ] Add a tiny starter binary.
 - [ ] Add `focus_forge_core`.
 - [ ] Add `focus_forge_cli`.
@@ -1271,6 +1432,7 @@ Math assignment format:
 - [ ] Add formatting and linting instructions.
 - [ ] Add sample data.
 - [ ] Add a basic test suite.
+- [ ] Add CI after local commands are stable.
 - [ ] Add chapter tags or branches only if they make the learning flow easier.
 
 ## Definition Of Done For The Learning Environment
