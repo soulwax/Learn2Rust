@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug ch00 setup lab",
+      "type": "lldb",
+      "request": "launch",
+      "cargo": {
+        "args": ["build", "-p", "ch00_setup"],
+        "filter": {
+          "name": "ch00_setup",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

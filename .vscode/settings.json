@@ -1,0 +1,11 @@
+{
+  "rust-analyzer.cargo.allTargets": true,
+  "rust-analyzer.check.command": "check",
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  }
+}

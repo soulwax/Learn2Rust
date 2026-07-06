@@ -18,10 +18,10 @@ Already present:
 - [x] Stable Rust toolchain pin
 - [x] Initial Cargo workspace
 - [x] First runnable setup lab
+- [x] VS Code extension recommendations and tasks
 
 Coming next:
 
-- [ ] VS Code tasks and extension recommendations
 - [ ] Chapter 0 guide and assignment
 
 ## Prerequisites
@@ -31,7 +31,7 @@ Expected:
 - [ ] Rust installed through `rustup`
 - [ ] `cargo` available in the terminal
 - [ ] VS Code
-- [ ] `rust-analyzer` extension
+- [ ] Recommended VS Code extensions from `.vscode/extensions.json`
 - [ ] Some programming background in C#, Java, TypeScript, or a similar language
 
 Check your Rust tools:
@@ -63,6 +63,14 @@ Try giving it your name:
 ```powershell
 cargo run -p ch00_setup -- Soulwax
 ```
+
+In VS Code, use **Terminal > Run Task...** for:
+
+- `cargo: check workspace`
+- `cargo: test workspace`
+- `cargo: fmt check`
+- `cargo: clippy workspace`
+- `run: ch00 setup lab`
 
 ## Learning Shape
 

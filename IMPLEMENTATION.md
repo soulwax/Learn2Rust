@@ -323,10 +323,10 @@ When commands are not available yet:
 - [x] Update `README.md`.
 - [x] Add `rust-toolchain.toml`.
 - [x] Add root `Cargo.toml`.
-- [ ] Add `.vscode/extensions.json`.
-- [ ] Add `.vscode/settings.json`.
-- [ ] Add `.vscode/tasks.json`.
-- [ ] Add `.vscode/launch.json`.
+- [x] Add `.vscode/extensions.json`.
+- [x] Add `.vscode/settings.json`.
+- [x] Add `.vscode/tasks.json`.
+- [x] Add `.vscode/launch.json`.
 - [ ] Add `docs/decision-records/0001-use-cargo-workspace.md`.
 - [ ] Add `docs/getting-unstuck.md`.
 - [ ] Add `docs/compiler-errors.md`.
@@ -343,7 +343,7 @@ When commands are not available yet:
 - [x] Ignore generated release artifacts.
 - [x] Ignore OS/editor noise.
 - [x] Keep `Cargo.lock` committed because this repository builds runnable apps and a learning workspace.
-- [ ] Keep `.vscode/` committed because the VS Code environment is part of the learning product.
+- [x] Keep `.vscode/` committed because the VS Code environment is part of the learning product.
 - [ ] Keep `sample_data/` committed because it is curriculum material.
 - [ ] Review `.gitignore` whenever persistence, packaging, or generated assets are added.
 
@@ -854,7 +854,7 @@ Create ADRs for:
 6. [x] Add `rust-toolchain.toml`.
 7. [x] Add root `Cargo.toml`.
 8. [x] Add `labs/ch00_setup`.
-9. [ ] Add VS Code recommendations and tasks.
+9. [x] Add VS Code recommendations and tasks.
 10. [ ] Add Chapter 0 guide and assignment.
 11. [ ] Add getting-unstuck and compiler-error docs.
 12. [ ] Add first ADR for workspace layout.
