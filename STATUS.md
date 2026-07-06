@@ -2,7 +2,7 @@
 
 Current phase: Phase 0 - Foundation
 Current chapter: ch00 - Setup And First Run
-Last verified commit: d7e6a3f
+Last verified commit: 1bf90d7
 Last verified commands:
 - git status --short --ignored
 - git log -5 --oneline
@@ -15,7 +15,7 @@ Current repository state:
 - No VS Code workspace configuration exists yet
 
 Next recommended increment:
-- Update README.md with the learner-facing course promise, prerequisites, setup expectations, and next command once the workspace exists.
+- Add rust-toolchain.toml and the initial root Cargo workspace with the first runnable ch00 setup lab.
 
 Known blockers:
 - none

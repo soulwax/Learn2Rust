@@ -320,7 +320,7 @@ When commands are not available yet:
 - [x] Add `IMPLEMENTATION.md`.
 - [x] Add `AGENTS.md`.
 - [x] Add `STATUS.md`.
-- [ ] Update `README.md`.
+- [x] Update `README.md`.
 - [ ] Add `rust-toolchain.toml`.
 - [ ] Add root `Cargo.toml`.
 - [ ] Add `.vscode/extensions.json`.
@@ -850,7 +850,7 @@ Create ADRs for:
 2. [x] Add `IMPLEMENTATION.md`.
 3. [x] Add `AGENTS.md`.
 4. [x] Add `STATUS.md`.
-5. [ ] Update `README.md` with setup and course promise.
+5. [x] Update `README.md` with setup and course promise.
 6. [ ] Add `rust-toolchain.toml`.
 7. [ ] Add root `Cargo.toml`.
 8. [ ] Add `labs/ch00_setup`.
