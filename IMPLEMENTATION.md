@@ -527,6 +527,16 @@ Rules:
 - [ ] If a compile-fail lesson is needed, use `trybuild` later or place the broken code in Markdown.
 - [ ] The lab README should be short; the real assignment lives in `assignments/`.
 
+### Teaching Comment Style
+
+Student-facing lab code (`src/lib.rs`, `src/main.rs`) is read as much as it is run, so comment it richly. `ch00_setup` is the reference example.
+
+- [ ] Give every public function a `///` doc comment so rust-analyzer hover and `cargo doc` teach the reader.
+- [ ] Add inline `//` notes on any Rust-specific line: ownership/borrowing, `&str` vs `String`, shadowing, blocks-as-expressions, lifetimes, `Option`/`Result`, closures, macros, and the test attributes.
+- [ ] Bridge to the learner's background: give the explicit C#, Java, or TypeScript analogy, then note where it breaks down.
+- [ ] Keep the code itself minimal and idiomatic; comments carry the teaching load, not clever code.
+- [ ] Comments must not change behavior. A commented lab must still pass `cargo fmt --check`, `cargo test`, and `cargo clippy`, and must not disturb any line a chapter or assignment references by exact text.
+
 ## Assignment Architecture
 
 Every assignment should include:

@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "name": "Focus Forge Demo Workspace",
+  "projects": [
+    {
+      "id": "proj-learn-rust",
+      "name": "Learn Rust",
+      "description": "Work through the Focus Forge course and rebuild everyday programming momentum.",
+      "status": "active",
+      "created_at": "2026-07-06T09:00:00Z",
+      "updated_at": "2026-07-06T09:00:00Z",
+      "tags": ["learning", "rust"],
+      "tasks": [
+        {
+          "id": "task-run-ch00",
+          "title": "Run the Chapter 0 setup lab end to end",
+          "priority": "high",
+          "done": true
+        },
+        {
+          "id": "task-break-and-fix",
+          "title": "Cause the deliberate compiler error and fix it",
+          "priority": "medium",
+          "done": true
+        },
+        {
+          "id": "task-first-slice",
+          "title": "Build the first Focus Forge core slice",
+          "priority": "high",
+          "done": false
+        }
+      ],
+      "notes": [
+        {
+          "id": "note-first-win",
+          "text": "cargo check is a fast compiler pass; cargo run shows the actual output. Both matter.",
+          "created_at": "2026-07-06T09:15:00Z"
+        }
+      ]
+    },
+    {
+      "id": "proj-side-tool",
+      "name": "Personal Dashboard",
+      "description": "A small side project to practice what each chapter teaches.",
+      "status": "planned",
+      "created_at": "2026-07-06T09:30:00Z",
+      "updated_at": "2026-07-06T09:30:00Z",
+      "tags": ["side-project"],
+      "tasks": [
+        {
+          "id": "task-sketch-ui",
+          "title": "Sketch the dashboard layout",
+          "priority": "low",
+          "done": false
+        }
+      ],
+      "notes": []
+    }
+  ]
+}
