@@ -328,11 +328,11 @@ When commands are not available yet:
 - [x] Add `.vscode/tasks.json`.
 - [x] Add `.vscode/launch.json`.
 - [ ] Add `docs/decision-records/0001-use-cargo-workspace.md`.
-- [ ] Add `docs/getting-unstuck.md`.
-- [ ] Add `docs/compiler-errors.md`.
+- [x] Add `docs/getting-unstuck.md`.
+- [x] Add `docs/compiler-errors.md`.
 - [x] Add `labs/ch00_setup`.
-- [ ] Add `chapters/00-setup.md`.
-- [ ] Add `assignments/ch00-setup.md`.
+- [x] Add `chapters/00-setup.md`.
+- [x] Add `assignments/ch00-setup.md`.
 
 ## `.gitignore` Policy
 
@@ -855,8 +855,8 @@ Create ADRs for:
 7. [x] Add root `Cargo.toml`.
 8. [x] Add `labs/ch00_setup`.
 9. [x] Add VS Code recommendations and tasks.
-10. [ ] Add Chapter 0 guide and assignment.
-11. [ ] Add getting-unstuck and compiler-error docs.
+10. [x] Add Chapter 0 guide and assignment.
+11. [x] Add getting-unstuck and compiler-error docs.
 12. [ ] Add first ADR for workspace layout.
 13. [ ] Verify clean checkout workflow.
 14. [ ] Commit and push Phase 0.

@@ -2,7 +2,7 @@
 
 Current phase: Phase 0 - Foundation
 Current chapter: ch00 - Setup And First Run
-Last verified commit: 0b30f7b
+Last verified commit: fe9a265
 Last verified commands:
 - git status --short --ignored
 - git log -5 --oneline
@@ -19,9 +19,11 @@ Current repository state:
 - Cargo.lock exists and should be committed
 - First runnable lab exists: labs/ch00_setup
 - VS Code workspace configuration exists
+- Chapter 0 guide and assignment exist
+- Getting-unstuck and compiler-error docs exist
 
 Next recommended increment:
-- Add Chapter 0 guide and assignment files, plus getting-unstuck and compiler-error docs.
+- Add docs/decision-records/0001-use-cargo-workspace.md, then verify the Phase 0 clean checkout workflow.
 
 Known blockers:
 - none
