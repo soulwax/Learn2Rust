@@ -4,6 +4,159 @@ This document is the technical companion to `MASTERPLAN.md`. The masterplan desc
 
 The target is one GitHub repository that opens cleanly in VS Code, runs with Cargo from the root, teaches Rust through chapter labs, and grows one real application: **Focus Forge**.
 
+## Agent Takeover Contract
+
+This section is the operational contract for any future agent entering the repository cold. An agent should be able to start here, determine the current state, choose the next safe increment, implement it, verify it, commit it, and leave the repository ready for the next agent.
+
+### First Five Minutes
+
+Run these commands before making changes:
+
+```powershell
+git status --short --ignored
+git branch --show-current
+git rev-parse --abbrev-ref --symbolic-full-name '@{u}'
+git log -5 --oneline
+if (Get-Command rg -ErrorAction SilentlyContinue) { rg --files -uu } else { Get-ChildItem -Recurse -Force -File }
+```
+
+Then read, in this order:
+
+- [ ] `README.md` for learner-facing promise and setup state.
+- [ ] `MASTERPLAN.md` for curriculum intent.
+- [ ] `IMPLEMENTATION.md` for technical state and next steps.
+- [ ] Existing chapter, assignment, and docs files relevant to the task.
+- [ ] Existing Cargo manifests before editing Rust code.
+
+Rules:
+
+- [ ] Do not read `.env`, `.env.local`, or any ignored secret file unless the user explicitly asks and the task requires it.
+- [ ] Do not stage ignored files.
+- [ ] Do not delete or reset user changes.
+- [ ] If the working tree is dirty, identify which changes are yours, which are user changes, and which are unrelated.
+- [ ] Prefer small increments that leave the repo runnable.
+
+### State Detection Checklist
+
+Before choosing work, determine:
+
+- [ ] Does root `Cargo.toml` exist?
+- [ ] Does `rust-toolchain.toml` exist?
+- [ ] Does `.vscode/` exist?
+- [ ] Which `crates/` exist?
+- [ ] Which `labs/` exist?
+- [ ] Which `chapters/` and `assignments/` exist?
+- [ ] Does `cargo check` work from the root?
+- [ ] Does `cargo test` work from the root?
+- [ ] Does CI exist?
+- [ ] What was the most recent commit?
+- [ ] Are there ignored local files, especially env files or learner data?
+
+Use this state to select the smallest valid next increment from `Initial Implementation Order`, then from the phase-specific TODOs.
+
+### Task Selection Algorithm
+
+Use this order unless the user gives a more specific request:
+
+1. [ ] Preserve safety: do not touch secrets, ignored learner data, or unrelated changes.
+2. [ ] If the repo cannot be checked from the root, prioritize the minimal workspace/tooling fix.
+3. [ ] If Chapter 0 is incomplete, prioritize Chapter 0 infrastructure and first-run workflow.
+4. [ ] If a chapter exists but lacks verification, add verification before adding new content.
+5. [ ] If the current chapter is complete, advance one chapter.
+6. [ ] Prefer docs plus runnable examples before broader architecture.
+7. [ ] Prefer product slices that can be tested through `focus_forge_core` or `focus_forge_cli`.
+8. [ ] Add GUI work only after the core and CLI path exist.
+9. [ ] Add CI only after local commands are stable.
+10. [ ] Commit and push the completed increment.
+
+### Increment Exit Criteria
+
+An increment is complete only when:
+
+- [ ] The requested change is implemented.
+- [ ] Relevant docs or TODOs are updated.
+- [ ] Relevant verification has run, or the limitation is documented.
+- [ ] `git status --short` is understood.
+- [ ] Only intended files are staged.
+- [ ] The commit is signed and uses the global Git identity.
+- [ ] The commit is pushed to the configured upstream.
+- [ ] The final response states commit hash, verification, and any remaining risks.
+
+## Agent Handoff Artifacts
+
+To make handoff durable, the repository should eventually contain these files:
+
+- [ ] `AGENTS.md`: concise instructions for future coding agents.
+- [ ] `STATUS.md`: current phase, current chapter, last verified command, and next recommended increment.
+- [ ] `docs/decision-records/`: short architecture decision records.
+- [ ] `docs/task-template.md`: reusable task card format.
+- [ ] `docs/chapter-template.md`: reusable chapter guide format.
+- [ ] `docs/assignment-template.md`: reusable assignment format.
+
+Until those files exist, `IMPLEMENTATION.md` is the handoff source of truth.
+
+### `STATUS.md` Template
+
+When created, `STATUS.md` should stay short:
+
+```markdown
+# Project Status
+
+Current phase: Phase N - Name
+Current chapter: chXX - Title
+Last verified commit: <hash>
+Last verified commands:
+- command
+
+Next recommended increment:
+- task
+
+Known blockers:
+- none
+
+Ignored local files observed:
+- .env
+- .env.local
+```
+
+### Task Card Template
+
+Every future issue, TODO card, or agent task should be expressible as:
+
+```markdown
+## Task
+
+Goal:
+
+Context files:
+
+Files expected to change:
+
+Files that must not change:
+
+Commands before:
+
+Implementation steps:
+
+Verification:
+
+Commit message:
+
+Handoff notes:
+```
+
+## Non-Negotiable Safety Rules
+
+- [ ] Never commit `.env`, `.env.local`, secrets, tokens, local learner data, logs, or generated build output.
+- [ ] Never rewrite Git history unless explicitly asked.
+- [ ] Never hide failing verification.
+- [ ] Never make a chapter depend on a paid service or live network access.
+- [ ] Never make the root crate an accidental dumping ground.
+- [ ] Never let GUI code become the owner of domain rules.
+- [ ] Never add a dependency without documenting why it exists.
+- [ ] Never introduce advanced Rust features earlier than the curriculum can explain them.
+- [ ] Never remove a learner recovery path while refactoring.
+
 ## Implementation Principles
 
 - [ ] Keep the repository runnable after every increment.
@@ -92,18 +245,81 @@ LearnRust/
     demo_workspace.json
 
   .gitignore
+  AGENTS.md
   Cargo.toml
   Cargo.lock
   IMPLEMENTATION.md
   MASTERPLAN.md
   README.md
+  STATUS.md
   rust-toolchain.toml
 ```
+
+## Repository Ownership Map
+
+Use this map to decide where a change belongs.
+
+| Area | Owns | Does not own |
+| --- | --- | --- |
+| `README.md` | First impression, setup, how to start | Deep curriculum rationale |
+| `MASTERPLAN.md` | Vision, pedagogy, chapter arc | Low-level command details |
+| `IMPLEMENTATION.md` | Technical realization and handoff | Learner-facing tutorial prose |
+| `STATUS.md` | Current state and next step | Full history or architecture rationale |
+| `AGENTS.md` | Short agent operating rules | Long explanations |
+| `chapters/` | Teaching narrative | Assignment checklists |
+| `assignments/` | Tasks, acceptance criteria, verification | Long concept essays |
+| `docs/` | References, troubleshooting, deeper explanations | Step-by-step chapter tasks |
+| `labs/` | Focused experiments | Product architecture |
+| `crates/focus_forge_core/` | Domain logic and tests | CLI/GUI formatting |
+| `crates/focus_forge_cli/` | Command parsing and terminal UX | Domain rules |
+| `crates/focus_forge_gui/` | Desktop UI state and rendering | Domain rules |
+| `sample_data/` | Committed curriculum data | Personal learner data |
+
+## Command Catalog
+
+Agents should keep these commands working as soon as the relevant files exist.
+
+Workspace:
+
+```powershell
+cargo check
+cargo test
+cargo fmt --check
+cargo clippy --workspace --all-targets --all-features
+```
+
+Focused packages:
+
+```powershell
+cargo check -p ch00_setup
+cargo test -p ch01_basics
+cargo test -p focus_forge_core
+cargo run -p focus_forge_cli -- project list
+cargo run -p focus_forge_gui
+```
+
+Git and handoff:
+
+```powershell
+git status --short --ignored
+git diff --stat
+git diff
+git diff --cached --stat
+git log -5 --oneline
+```
+
+When commands are not available yet:
+
+- [ ] Say which missing file or phase blocks the command.
+- [ ] Add the command to the relevant TODO section.
+- [ ] Do not pretend verification ran.
 
 ## Files To Create First
 
 - [x] Add `.gitignore`.
 - [x] Add `IMPLEMENTATION.md`.
+- [ ] Add `AGENTS.md`.
+- [ ] Add `STATUS.md`.
 - [ ] Update `README.md`.
 - [ ] Add `rust-toolchain.toml`.
 - [ ] Add root `Cargo.toml`.
@@ -111,6 +327,7 @@ LearnRust/
 - [ ] Add `.vscode/settings.json`.
 - [ ] Add `.vscode/tasks.json`.
 - [ ] Add `.vscode/launch.json`.
+- [ ] Add `docs/decision-records/0001-use-cargo-workspace.md`.
 - [ ] Add `docs/getting-unstuck.md`.
 - [ ] Add `docs/compiler-errors.md`.
 - [ ] Add `labs/ch00_setup`.
@@ -287,6 +504,29 @@ Naming:
 - [ ] Assignment: `assignments/ch02-ownership.md`.
 - [ ] Chapter guide: `chapters/02-ownership.md`.
 
+### Lab Package Contract
+
+Each lab package should contain:
+
+```text
+labs/chXX_topic/
+  Cargo.toml
+  src/
+    main.rs
+  tests/
+    chapter_checks.rs
+  README.md
+```
+
+Rules:
+
+- [ ] `Cargo.toml` package name matches the lab folder unless there is a collision.
+- [ ] `src/main.rs` gives a fast visible result.
+- [ ] Tests verify the learning objective without becoming puzzle gates.
+- [ ] Comments may show broken examples, but the completed lab must compile.
+- [ ] If a compile-fail lesson is needed, use `trybuild` later or place the broken code in Markdown.
+- [ ] The lab README should be short; the real assignment lives in `assignments/`.
+
 ## Assignment Architecture
 
 Every assignment should include:
@@ -311,6 +551,28 @@ Verification formats:
 - [ ] `cargo test -p focus_forge_core`.
 - [ ] `cargo run -p focus_forge_cli -- project list`.
 - [ ] Manual GUI checklist.
+
+### Assignment Completion Contract
+
+An assignment is complete when:
+
+- [ ] The learner can identify the files they changed.
+- [ ] The learner can run the verification command.
+- [ ] The learner can explain the new Rust concept in one paragraph.
+- [ ] The learner can name the closest C#, Java, or TypeScript analogy.
+- [ ] The learner can describe one way the analogy breaks down.
+- [ ] The learner has either completed or consciously skipped the stretch tasks.
+- [ ] The product artifact or lab artifact is visible.
+
+### Common Assignment Failure Modes
+
+- [ ] Too much concept prose before the first command.
+- [ ] Verification depends on hidden state.
+- [ ] The assignment asks for design choices before the learner has examples.
+- [ ] The stretch task silently becomes required.
+- [ ] The OOP analogy is missing where it would reduce friction.
+- [ ] The math warm-up is unrelated to the app.
+- [ ] The app improvement is too invisible to feel rewarding.
 
 ## VS Code Architecture
 
@@ -422,19 +684,182 @@ Policy:
   - [ ] `chapter-00-complete`.
   - [ ] `chapter-01-complete`.
 
+### Signed Increment Protocol
+
+For every completed increment:
+
+- [ ] Run `git status --short --ignored`.
+- [ ] Review `git diff --stat` and `git diff`.
+- [ ] Stage only intended files with path-specific `git add`.
+- [ ] Review `git diff --cached --stat`.
+- [ ] Commit with `git commit -S --signoff`.
+- [ ] Use the user's global `user.name` and `user.email`.
+- [ ] Push with `git push`.
+- [ ] Verify the latest commit with `git log -1 --show-signature --pretty=fuller`.
+- [ ] Leave ignored `.env` and local data files untouched.
+
+Commit message examples:
+
+- [ ] `docs: add implementation handoff protocol`
+- [ ] `chore: scaffold rust workspace`
+- [ ] `docs: add chapter 0 setup assignment`
+- [ ] `feat: add focus forge core project model`
+- [ ] `test: cover workspace persistence`
+
+### Handoff Response Template
+
+At the end of an increment, report:
+
+```text
+Changed:
+- file or area
+
+Verified:
+- command or manual check
+
+Commit:
+- hash subject
+
+Pushed:
+- remote/branch
+
+Left untouched:
+- ignored or unrelated files, if any
+
+Next:
+- recommended next increment
+```
+
+## Phase Gates
+
+Do not mark a phase complete until its gate passes.
+
+### Phase 0 Gate: Foundation
+
+- [ ] `README.md` explains the project and first command.
+- [ ] `.gitignore` exists and protects local files.
+- [ ] `rust-toolchain.toml` exists.
+- [ ] Root `Cargo.toml` exists.
+- [ ] VS Code extension recommendations exist.
+- [ ] `labs/ch00_setup` runs.
+- [ ] `cargo check` works from the root.
+- [ ] Chapter 0 assignment exists.
+- [ ] Getting-unstuck docs exist.
+
+### Phase 1 Gate: First Feedback Loop
+
+- [ ] Chapter 0 can be completed in under ten minutes.
+- [ ] One test passes.
+- [ ] One deliberate compiler-error exercise exists.
+- [ ] VS Code check task works.
+- [ ] `STATUS.md` points to the next increment.
+
+### Phase 2 Gate: First Product Slice
+
+- [ ] `focus_forge_core` exists.
+- [ ] `focus_forge_cli` exists.
+- [ ] CLI can print a project summary.
+- [ ] Core validation has tests.
+- [ ] Chapters 1 and 2 exist.
+- [ ] Ownership is introduced gently.
+
+### Phase 3 Gate: Durable App Core
+
+- [ ] Domain models exist.
+- [ ] JSON persistence works.
+- [ ] CLI can add/list projects and tasks.
+- [ ] Sample data exists.
+- [ ] Persistence tests use temp directories.
+- [ ] Chapters 3-8 exist.
+
+### Phase 4 Gate: Abstraction And Refactoring
+
+- [ ] Traits exist only at real boundaries.
+- [ ] Fake storage exists for tests.
+- [ ] CLI and persistence integration tests exist.
+- [ ] Refactoring chapter uses code already built by the learner.
+- [ ] Chapters 9-10 exist.
+
+### Phase 5 Gate: GUI Payoff
+
+- [ ] `focus_forge_gui` exists.
+- [ ] GUI opens on a clean checkout.
+- [ ] GUI displays real workspace data.
+- [ ] GUI can edit and save at least one product concept.
+- [ ] GUI manual verification checklist exists.
+- [ ] Chapters 11-14 exist.
+
+### Phase 6 Gate: Advanced Practical Rust
+
+- [ ] Async and HTTP are optional.
+- [ ] Network behavior has offline fixtures or mocks.
+- [ ] Import/export and backups exist.
+- [ ] Settings and data directories exist.
+- [ ] Release build instructions exist.
+- [ ] Chapters 15-18 exist.
+
+### Phase 7 Gate: Curriculum Hardening
+
+- [ ] Clean clone walkthrough completed.
+- [ ] CI passes.
+- [ ] Chapter timing has been recorded.
+- [ ] Chapter checkpoints are tagged.
+- [ ] Solutions policy is decided.
+- [ ] Known rough edges are documented.
+
+## Architecture Decision Records
+
+When an agent makes a durable architecture choice, add a short ADR under `docs/decision-records/`.
+
+ADR naming:
+
+```text
+docs/decision-records/0001-use-cargo-workspace.md
+docs/decision-records/0002-use-egui-for-gui.md
+```
+
+ADR template:
+
+```markdown
+# ADR N: Title
+
+Status: Accepted
+Date: YYYY-MM-DD
+
+## Context
+
+## Decision
+
+## Consequences
+
+## Alternatives Considered
+```
+
+Create ADRs for:
+
+- [ ] Cargo workspace layout.
+- [ ] `egui` / `eframe` as GUI stack.
+- [ ] JSON before SQLite.
+- [ ] CLI before GUI.
+- [ ] Optional HTTP only.
+- [ ] Signed incremental commit workflow.
+
 ## Initial Implementation Order
 
 1. [x] Add `.gitignore`.
 2. [x] Add `IMPLEMENTATION.md`.
-3. [ ] Update `README.md` with setup and course promise.
-4. [ ] Add `rust-toolchain.toml`.
-5. [ ] Add root `Cargo.toml`.
-6. [ ] Add `labs/ch00_setup`.
-7. [ ] Add VS Code recommendations and tasks.
-8. [ ] Add Chapter 0 guide and assignment.
-9. [ ] Add getting-unstuck and compiler-error docs.
-10. [ ] Verify clean checkout workflow.
-11. [ ] Commit and push Phase 0.
+3. [ ] Add `AGENTS.md`.
+4. [ ] Add `STATUS.md`.
+5. [ ] Update `README.md` with setup and course promise.
+6. [ ] Add `rust-toolchain.toml`.
+7. [ ] Add root `Cargo.toml`.
+8. [ ] Add `labs/ch00_setup`.
+9. [ ] Add VS Code recommendations and tasks.
+10. [ ] Add Chapter 0 guide and assignment.
+11. [ ] Add getting-unstuck and compiler-error docs.
+12. [ ] Add first ADR for workspace layout.
+13. [ ] Verify clean checkout workflow.
+14. [ ] Commit and push Phase 0.
 
 ## Technical Definition Of Done
 
@@ -449,3 +874,7 @@ Policy:
 - [ ] Sample data is committed.
 - [ ] CI passes once added.
 - [ ] The architecture supports Focus Forge growing from CLI to GUI without rewrites.
+- [ ] A new agent can determine current state by reading `README.md`, `MASTERPLAN.md`, `IMPLEMENTATION.md`, and `STATUS.md`.
+- [ ] A new agent can identify the next safe increment without asking for hidden context.
+- [ ] Every completed increment leaves verification notes and a signed pushed commit.
+- [ ] Ignored secrets and local data remain untouched.
