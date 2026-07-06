@@ -327,7 +327,7 @@ When commands are not available yet:
 - [x] Add `.vscode/settings.json`.
 - [x] Add `.vscode/tasks.json`.
 - [x] Add `.vscode/launch.json`.
-- [ ] Add `docs/decision-records/0001-use-cargo-workspace.md`.
+- [x] Add `docs/decision-records/0001-use-cargo-workspace.md`.
 - [x] Add `docs/getting-unstuck.md`.
 - [x] Add `docs/compiler-errors.md`.
 - [x] Add `labs/ch00_setup`.
@@ -857,7 +857,7 @@ Create ADRs for:
 9. [x] Add VS Code recommendations and tasks.
 10. [x] Add Chapter 0 guide and assignment.
 11. [x] Add getting-unstuck and compiler-error docs.
-12. [ ] Add first ADR for workspace layout.
+12. [x] Add first ADR for workspace layout.
 13. [ ] Verify clean checkout workflow.
 14. [ ] Commit and push Phase 0.
 
