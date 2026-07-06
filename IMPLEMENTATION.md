@@ -680,6 +680,9 @@ Policy:
 - [ ] Explain every dependency in `docs/dependencies.md`.
 - [ ] Avoid crates that hide the concept currently being taught.
 - [ ] Keep versions centralized in the workspace when practical.
+- [ ] `focus_forge_core` introduces `serde`, `serde_json`, and `thiserror` at
+  Phase 2 (see ADR 0002). Chapter numbers below describe when the learner is
+  taught a dependency, not when it first appears in product code.
 
 ## Git And Release Workflow
 

@@ -1,9 +1,16 @@
 [workspace]
 resolver = "2"
 members = [
+    "crates/focus_forge_core",
     "labs/ch00_setup",
 ]
 
 [workspace.package]
 edition = "2021"
 repository = "https://github.com/soulwax/Learn2Rust"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+tempfile = "3"
