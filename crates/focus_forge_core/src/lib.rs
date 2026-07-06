@@ -4,8 +4,10 @@
 
 mod error;
 mod note;
+mod project;
 mod task;
 
 pub use error::{CoreError, Result};
 pub use note::Note;
+pub use project::{Project, ProjectStatus};
 pub use task::{Priority, Task};
