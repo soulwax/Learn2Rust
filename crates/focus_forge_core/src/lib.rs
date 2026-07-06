@@ -6,8 +6,10 @@ mod error;
 mod note;
 mod project;
 mod task;
+mod workspace;
 
 pub use error::{CoreError, Result};
 pub use note::Note;
 pub use project::{Project, ProjectStatus};
 pub use task::{Priority, Task};
+pub use workspace::{Workspace, CURRENT_VERSION};
