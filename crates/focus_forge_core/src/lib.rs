@@ -3,5 +3,7 @@
 //! on no CLI or GUI code — those crates depend on this one, never the reverse.
 
 mod error;
+mod task;
 
 pub use error::{CoreError, Result};
+pub use task::{Priority, Task};
