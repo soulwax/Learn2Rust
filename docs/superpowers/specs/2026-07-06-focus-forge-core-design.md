@@ -184,8 +184,10 @@ save_workspace(workspace: &Workspace, path: &Path) -> Result<()>
 
 - Unit tests per module: construction validation (each error variant), `ProjectStatus`
   and `Priority` serde round-trips (snake_case verified), `Task::complete`.
-- `tests/core_behavior.rs`: build a `Workspace`, save to a `tempfile` path, load it
-  back, assert equality (full round-trip).
+- Save→load round-trip (build a `Workspace`, save to a `tempfile` path, load it back,
+  assert equality) plus missing-file and malformed-JSON error paths. As implemented,
+  these live as `#[cfg(test)]` unit tests in `src/storage.rs` (which can reach crate
+  internals) rather than a separate `tests/core_behavior.rs` file.
 - `tests/sample_data.rs`: load the committed `sample_data/demo_workspace.json`,
   assert it parses and `validate()`s. This promotes the sample data from
   "provisional" to a verified contract and lets us clear that flag in `STATUS.md`.

@@ -2,7 +2,7 @@
 
 Current phase: Phase 2 in progress - First Product Slice (focus_forge_core built and tested; focus_forge_cli not started)
 Current chapter: ch00 - Setup And First Run (teaching progress; unaffected by core build-ahead, see ADR 0002)
-Last verified commit: ead2247
+Last verified commit: c0f926f
 Last verified commands:
 - git status --short --ignored
 - git log -5 --oneline
