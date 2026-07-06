@@ -1,8 +1,8 @@
 # Project Status
 
-Current phase: Phase 0 - Foundation
+Current phase: Phase 0 - Foundation gate passed
 Current chapter: ch00 - Setup And First Run
-Last verified commit: 3b37342
+Last verified commit: 18d3998
 Last verified commands:
 - git status --short --ignored
 - git log -5 --oneline
@@ -11,6 +11,7 @@ Last verified commands:
 - cargo test
 - cargo clippy --workspace --all-targets --all-features
 - cargo run -p ch00_setup -- Soulwax
+- clean clone with git clone --no-local, then fmt/check/test/clippy/run/VS Code JSON validation
 
 Current repository state:
 - Planning docs exist: README.md, MASTERPLAN.md, IMPLEMENTATION.md, AGENTS.md
@@ -23,7 +24,7 @@ Current repository state:
 - Getting-unstuck and compiler-error docs exist
 
 Next recommended increment:
-- Verify the Phase 0 clean checkout workflow and then decide whether Phase 0 is ready to tag or needs sample_data/docs polish first.
+- Start Phase 1 by timing the Chapter 0 path, then add a lightweight sample_data/demo_workspace.json or tag the stable Chapter 0 checkpoint.
 
 Known blockers:
 - none

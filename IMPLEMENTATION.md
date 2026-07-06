@@ -736,15 +736,15 @@ Do not mark a phase complete until its gate passes.
 
 ### Phase 0 Gate: Foundation
 
-- [ ] `README.md` explains the project and first command.
-- [ ] `.gitignore` exists and protects local files.
-- [ ] `rust-toolchain.toml` exists.
-- [ ] Root `Cargo.toml` exists.
-- [ ] VS Code extension recommendations exist.
-- [ ] `labs/ch00_setup` runs.
-- [ ] `cargo check` works from the root.
-- [ ] Chapter 0 assignment exists.
-- [ ] Getting-unstuck docs exist.
+- [x] `README.md` explains the project and first command.
+- [x] `.gitignore` exists and protects local files.
+- [x] `rust-toolchain.toml` exists.
+- [x] Root `Cargo.toml` exists.
+- [x] VS Code extension recommendations exist.
+- [x] `labs/ch00_setup` runs.
+- [x] `cargo check` works from the root.
+- [x] Chapter 0 assignment exists.
+- [x] Getting-unstuck docs exist.
 
 ### Phase 1 Gate: First Feedback Loop
 
@@ -858,8 +858,8 @@ Create ADRs for:
 10. [x] Add Chapter 0 guide and assignment.
 11. [x] Add getting-unstuck and compiler-error docs.
 12. [x] Add first ADR for workspace layout.
-13. [ ] Verify clean checkout workflow.
-14. [ ] Commit and push Phase 0.
+13. [x] Verify clean checkout workflow.
+14. [x] Commit and push Phase 0.
 
 ## Technical Definition Of Done
 
