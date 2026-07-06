@@ -1,0 +1,40 @@
+# Rust build output
+/target/
+**/*.rs.bk
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+/tmp/
+/temp/
+
+# Local learner/app data
+/local_data/
+/user_data/
+/data/local/
+focus_forge.local.json
+focus_forge.local.*.json
+*.backup.json
+
+# Generated release artifacts
+/dist/
+/release/
+/artifacts/
+
+# IDE/editor noise
+.idea/
+*.swp
+*.swo
+*~
+
+# OS noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+
