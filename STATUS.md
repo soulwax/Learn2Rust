@@ -1,7 +1,7 @@
 # Project Status
 
-Current phase: Phase 1 - First Feedback Loop
-Current chapter: ch00 - Setup And First Run
+Current phase: Phase 2 in progress - First Product Slice (focus_forge_core built and tested; focus_forge_cli not started)
+Current chapter: ch00 - Setup And First Run (teaching progress; unaffected by core build-ahead, see ADR 0002)
 Last verified commit: ead2247
 Last verified commands:
 - git status --short --ignored
@@ -28,6 +28,7 @@ Current repository state:
 - Teaching Comment Style convention recorded in IMPLEMENTATION.md
 - sample_data/demo_workspace.json is verified by crates/focus_forge_core/tests/sample_data.rs
 - Chapter 0 checkpoint tagged: chapter-00-complete
+- Product phase and teaching chapter are intentionally decoupled (ADR 0002): core crate is built ahead of the curriculum, so phase advances independently of chapter
 
 Next recommended increment:
 - Time the Chapter 0 path (Phase 1 gate target: under ten minutes) and record it.
