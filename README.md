@@ -15,12 +15,12 @@ Already present:
 - [x] Agent handoff rules in `AGENTS.md`
 - [x] Current status in `STATUS.md`
 - [x] Basic `.gitignore`
+- [x] Stable Rust toolchain pin
+- [x] Initial Cargo workspace
+- [x] First runnable setup lab
 
 Coming next:
 
-- [ ] Rust toolchain pin
-- [ ] Cargo workspace
-- [ ] First runnable setup lab
 - [ ] VS Code tasks and extension recommendations
 - [ ] Chapter 0 guide and assignment
 
@@ -50,12 +50,18 @@ For the moment, read these files in order:
 3. `AGENTS.md`
 4. `STATUS.md`
 
-Once the Cargo workspace exists, the normal learner workflow will become:
+Run the first lab:
 
 ```powershell
 cargo check
 cargo test
 cargo run -p ch00_setup
+```
+
+Try giving it your name:
+
+```powershell
+cargo run -p ch00_setup -- Soulwax
 ```
 
 ## Learning Shape

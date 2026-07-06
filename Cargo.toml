@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+members = [
+    "labs/ch00_setup",
+]
+
+[workspace.package]
+edition = "2021"
+repository = "https://github.com/soulwax/Learn2Rust"

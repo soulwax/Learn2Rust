@@ -321,8 +321,8 @@ When commands are not available yet:
 - [x] Add `AGENTS.md`.
 - [x] Add `STATUS.md`.
 - [x] Update `README.md`.
-- [ ] Add `rust-toolchain.toml`.
-- [ ] Add root `Cargo.toml`.
+- [x] Add `rust-toolchain.toml`.
+- [x] Add root `Cargo.toml`.
 - [ ] Add `.vscode/extensions.json`.
 - [ ] Add `.vscode/settings.json`.
 - [ ] Add `.vscode/tasks.json`.
@@ -330,7 +330,7 @@ When commands are not available yet:
 - [ ] Add `docs/decision-records/0001-use-cargo-workspace.md`.
 - [ ] Add `docs/getting-unstuck.md`.
 - [ ] Add `docs/compiler-errors.md`.
-- [ ] Add `labs/ch00_setup`.
+- [x] Add `labs/ch00_setup`.
 - [ ] Add `chapters/00-setup.md`.
 - [ ] Add `assignments/ch00-setup.md`.
 
@@ -342,7 +342,7 @@ When commands are not available yet:
 - [x] Ignore local learner/app data.
 - [x] Ignore generated release artifacts.
 - [x] Ignore OS/editor noise.
-- [ ] Keep `Cargo.lock` committed because this repository builds runnable apps and a learning workspace.
+- [x] Keep `Cargo.lock` committed because this repository builds runnable apps and a learning workspace.
 - [ ] Keep `.vscode/` committed because the VS Code environment is part of the learning product.
 - [ ] Keep `sample_data/` committed because it is curriculum material.
 - [ ] Review `.gitignore` whenever persistence, packaging, or generated assets are added.
@@ -851,9 +851,9 @@ Create ADRs for:
 3. [x] Add `AGENTS.md`.
 4. [x] Add `STATUS.md`.
 5. [x] Update `README.md` with setup and course promise.
-6. [ ] Add `rust-toolchain.toml`.
-7. [ ] Add root `Cargo.toml`.
-8. [ ] Add `labs/ch00_setup`.
+6. [x] Add `rust-toolchain.toml`.
+7. [x] Add root `Cargo.toml`.
+8. [x] Add `labs/ch00_setup`.
 9. [ ] Add VS Code recommendations and tasks.
 10. [ ] Add Chapter 0 guide and assignment.
 11. [ ] Add getting-unstuck and compiler-error docs.
