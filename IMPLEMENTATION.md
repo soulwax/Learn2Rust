@@ -86,7 +86,7 @@ An increment is complete only when:
 
 To make handoff durable, the repository should eventually contain these files:
 
-- [ ] `AGENTS.md`: concise instructions for future coding agents.
+- [x] `AGENTS.md`: concise instructions for future coding agents.
 - [ ] `STATUS.md`: current phase, current chapter, last verified command, and next recommended increment.
 - [ ] `docs/decision-records/`: short architecture decision records.
 - [ ] `docs/task-template.md`: reusable task card format.
@@ -318,7 +318,7 @@ When commands are not available yet:
 
 - [x] Add `.gitignore`.
 - [x] Add `IMPLEMENTATION.md`.
-- [ ] Add `AGENTS.md`.
+- [x] Add `AGENTS.md`.
 - [ ] Add `STATUS.md`.
 - [ ] Update `README.md`.
 - [ ] Add `rust-toolchain.toml`.
@@ -848,7 +848,7 @@ Create ADRs for:
 
 1. [x] Add `.gitignore`.
 2. [x] Add `IMPLEMENTATION.md`.
-3. [ ] Add `AGENTS.md`.
+3. [x] Add `AGENTS.md`.
 4. [ ] Add `STATUS.md`.
 5. [ ] Update `README.md` with setup and course promise.
 6. [ ] Add `rust-toolchain.toml`.
