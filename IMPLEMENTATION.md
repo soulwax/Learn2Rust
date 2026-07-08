@@ -221,6 +221,17 @@ LearnRust/
         app.rs
         views/
 
+    focus_forge_status/
+      Cargo.toml
+      src/
+        main.rs
+        lib.rs
+        git.rs
+        cargo_meta.rs
+        test_counts.rs
+        status_md.rs
+        model.rs
+
   docs/
     compiler-errors.md
     dependencies.md
@@ -273,7 +284,9 @@ Use this map to decide where a change belongs.
 | `crates/focus_forge_core/` | Domain logic and tests | CLI/GUI formatting |
 | `crates/focus_forge_cli/` | Command parsing and terminal UX | Domain rules |
 | `crates/focus_forge_gui/` | Desktop UI state and rendering | Domain rules |
+| `crates/focus_forge_status/` | Generating `site/static/status.json` from git/cargo (repo-maintenance tool) | Focus Forge domain rules, anything under `site/` beyond writing that one file |
 | `sample_data/` | Committed curriculum data | Personal learner data |
+| `site/` | The SvelteKit landing/progress site (separate effort; consumes `status.json`) | Rust workspace code |
 
 ## Command Catalog
 
@@ -296,6 +309,7 @@ cargo test -p ch01_basics
 cargo test -p focus_forge_core
 cargo run -p focus_forge_cli -- project list
 cargo run -p focus_forge_gui
+cargo run -p focus_forge_status -- --out site/static/status.json
 ```
 
 Git and handoff:
@@ -486,6 +500,30 @@ Manual verification:
 - [ ] Task can be completed.
 - [ ] Data survives restart.
 - [ ] Validation errors show without crashing.
+
+### `focus_forge_status`
+
+Purpose:
+
+- [x] Generate `site/static/status.json`: a snapshot of workspace crates/labs,
+  their test counts, the last commit, and the current phase/chapter, so the
+  landing site under `site/` can show real progress without a live server.
+- [x] Stay a repo-maintenance tool, not a Focus Forge product feature — no
+  path dependency on `focus_forge_core` or `focus_forge_cli`, and no changes
+  to anything under `site/` beyond writing that one JSON file.
+- [x] Gather facts by shelling out to `git`/`cargo` rather than reimplementing
+  their parsing (`git log`, `cargo metadata`, `cargo test` summary lines).
+- [x] Read phase/chapter from a small YAML front-matter block at the top of
+  `STATUS.md` (see `docs/superpowers/specs/2026-07-08-focus-forge-status-design.md`).
+
+Design and implementation records:
+
+- [x] Design spec: `docs/superpowers/specs/2026-07-08-focus-forge-status-design.md`.
+- [x] Implementation plan: `docs/superpowers/plans/2026-07-08-focus-forge-status.md`.
+
+Out of scope for now (see the design spec's Non-Goals): no HTTP server, no
+CI wiring, no site-side consumption code — those are later, separate
+increments.
 
 ## Labs Architecture
 

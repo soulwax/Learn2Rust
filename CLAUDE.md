@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Learn2Rust is a **course-as-repository**: a clone-and-learn Rust curriculum for a returning computer scientist coming from C#/Java/TypeScript. It teaches Rust by building one real application, **Focus Forge** (a personal project/task/note workbench), across chapters — starting as CLI labs and growing into an `egui`/`eframe` desktop GUI.
 
-Most work here is authoring curriculum and scaffolding the workspace incrementally, not shipping a product. The repository is currently in **Phase 0 (Foundation)**; only `labs/ch00_setup` exists as runnable code.
+Most work here is authoring curriculum and scaffolding the workspace incrementally, not shipping a product. See `STATUS.md` for the current phase and chapter — the product crates (`focus_forge_core`, `focus_forge_cli`) are intentionally built ahead of the teaching chapters (ADR 0002); `STATUS.md`'s front matter is the source of truth for progress, not this file.
 
 ## Common Commands
 
@@ -38,13 +38,15 @@ Every change belongs to exactly one area. Respect these boundaries — the curri
 | `crates/focus_forge_core` | domain types, validation, errors, search, persistence, tests | any CLI/GUI formatting |
 | `crates/focus_forge_cli` | command parsing, terminal output | domain rules |
 | `crates/focus_forge_gui` | desktop UI state and rendering (`egui`/`eframe`) | domain rules |
+| `crates/focus_forge_status` | generates `site/static/status.json` from git/cargo (workspace facts, test counts, phase/chapter) — a repo-maintenance tool, not a Focus Forge product feature | Focus Forge domain rules, anything under `./site` |
 | `labs/chXX_*` | small, focused chapter experiments | product architecture |
 | `assignments/` | tasks, acceptance criteria, verification steps | long concept prose |
 | `chapters/` | teaching narrative | assignment checklists |
 | `docs/` | references, troubleshooting, decision records | step-by-step chapter tasks |
 | `sample_data/` | committed curriculum data | personal learner data (must stay ignored) |
+| `site/` | the SvelteKit landing/progress site (owned as its own effort; consumes `status.json`, is not built by chapter work) | Rust workspace code |
 
-**Crate dependency direction is one-way:** `focus_forge_cli` and `focus_forge_gui` depend on `focus_forge_core`; `focus_forge_core` must never depend on CLI or GUI. Labs may depend on `focus_forge_core` only when a chapter needs it.
+**Crate dependency direction is one-way:** `focus_forge_cli` and `focus_forge_gui` depend on `focus_forge_core`; `focus_forge_core` must never depend on CLI or GUI. Labs may depend on `focus_forge_core` only when a chapter needs it. `focus_forge_status` depends on nothing else in the workspace — it inspects the workspace from the outside via `git`/`cargo` subprocesses, never via a path dependency.
 
 The workspace manifest lists **only members that exist** — add lab/crate members as they are created, not ahead of time. Shared dependency versions go in `[workspace.dependencies]`; crate manifests use `edition.workspace = true` etc.
 

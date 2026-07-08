@@ -40,6 +40,7 @@ Then read:
 - [ ] `crates/focus_forge_core` owns domain logic, validation, persistence, search, and tests.
 - [ ] `crates/focus_forge_cli` owns command parsing and terminal output.
 - [ ] `crates/focus_forge_gui` owns desktop UI state and rendering.
+- [ ] `crates/focus_forge_status` owns generating `site/static/status.json` from git/cargo (workspace facts, test counts, phase/chapter). It is a repo-maintenance tool, not a Focus Forge product feature — it depends on nothing else in the workspace and never touches `./site` beyond writing that one file.
 - [ ] `labs/` owns focused chapter experiments.
 - [ ] `assignments/` owns tasks, acceptance criteria, and verification.
 - [ ] `chapters/` owns teaching narrative.
