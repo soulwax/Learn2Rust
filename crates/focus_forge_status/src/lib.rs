@@ -8,6 +8,7 @@ use std::path::Path;
 use thiserror::Error;
 
 mod model;
+mod status_md;
 
 #[derive(Debug, Error)]
 pub enum StatusError {
