@@ -8,6 +8,7 @@ use std::path::Path;
 use thiserror::Error;
 
 mod cargo_meta;
+mod git;
 mod model;
 mod status_md;
 mod test_counts;
