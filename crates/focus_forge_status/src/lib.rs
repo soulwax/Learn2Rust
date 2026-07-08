@@ -7,6 +7,8 @@ use std::path::Path;
 
 use thiserror::Error;
 
+mod model;
+
 #[derive(Debug, Error)]
 pub enum StatusError {
     #[error("git command failed: {0}")]
