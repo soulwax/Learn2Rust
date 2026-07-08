@@ -1,0 +1,18 @@
+[package]
+name = "focus_forge_status"
+version = "0.1.0"
+edition.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "focus-forge-status"
+path = "src/main.rs"
+
+[dependencies]
+clap = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
