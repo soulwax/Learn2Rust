@@ -1,19 +1,16 @@
 # Project Status
 
-Current phase: Phase 2 in progress - First Product Slice (focus_forge_core built and tested; focus_forge_cli not started)
-Current chapter: ch00 - Setup And First Run (teaching progress; unaffected by core build-ahead, see ADR 0002)
-Last verified commit: c0f926f
+Current phase: Phase 2 gate met - First Product Slice (focus_forge_core and focus_forge_cli both built and tested)
+Current chapter: ch00 - Setup And First Run (teaching progress; unaffected by core/CLI build-ahead, see ADR 0002)
+Last verified commit: 71b8c77
 Last verified commands:
 - git status --short --ignored
 - git log -5 --oneline
 - cargo fmt --check
 - cargo check
-- cargo test -p ch00_setup
 - cargo clippy --workspace --all-targets --all-features
-- cargo run -p ch00_setup -- Soulwax
-- node JSON.parse validation of sample_data/demo_workspace.json
-- cargo test -p focus_forge_core
 - cargo test --workspace
+- cargo run -p focus_forge_cli -- --file <tmp> project add/list/show, task add/done, note add (manual smoke test)
 
 Current repository state:
 - Planning docs exist: README.md, MASTERPLAN.md, IMPLEMENTATION.md, AGENTS.md
@@ -28,12 +25,14 @@ Current repository state:
 - Teaching Comment Style convention recorded in IMPLEMENTATION.md
 - sample_data/demo_workspace.json is verified by crates/focus_forge_core/tests/sample_data.rs
 - Chapter 0 checkpoint tagged: chapter-00-complete
-- Product phase and teaching chapter are intentionally decoupled (ADR 0002): core crate is built ahead of the curriculum, so phase advances independently of chapter
+- Product phase and teaching chapter are intentionally decoupled (ADR 0002, amended for clap): core and CLI crates are built ahead of the curriculum, so phase advances independently of chapter
+- focus_forge_cli exists per docs/superpowers/specs/2026-07-07-focus-forge-cli-design.md:
+  project add/list/show, task add/done, note add, all TDD'd (19 unit tests + 6 assert_cmd integration tests)
 
 Next recommended increment:
 - Time the Chapter 0 path (Phase 1 gate target: under ten minutes) and record it.
-- Begin the focus_forge_cli slice (separate spec) that drives focus_forge_core:
-  project add/list/show, task add/done, note add, workspace export/import.
+- Chapters 1 and 2 (basics, ownership) to close out the remaining Phase 2 gate items.
+- Consider the workspace export/import slice (explicitly out of scope for the CLI slice just completed).
 
 Known blockers:
 - none

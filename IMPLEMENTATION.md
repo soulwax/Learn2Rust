@@ -681,7 +681,8 @@ Policy:
 - [ ] Avoid crates that hide the concept currently being taught.
 - [ ] Keep versions centralized in the workspace when practical.
 - [ ] `focus_forge_core` introduces `serde`, `serde_json`, and `thiserror` at
-  Phase 2 (see ADR 0002). Chapter numbers below describe when the learner is
+  Phase 2, and `focus_forge_cli` introduces `clap` at Phase 2 (see ADR 0002,
+  amended 2026-07-08). Chapter numbers below describe when the learner is
   taught a dependency, not when it first appears in product code.
 
 ## Git And Release Workflow
@@ -769,10 +770,10 @@ Do not mark a phase complete until its gate passes.
 
 ### Phase 2 Gate: First Product Slice
 
-- [ ] `focus_forge_core` exists.
-- [ ] `focus_forge_cli` exists.
-- [ ] CLI can print a project summary.
-- [ ] Core validation has tests.
+- [x] `focus_forge_core` exists.
+- [x] `focus_forge_cli` exists.
+- [x] CLI can print a project summary.
+- [x] Core validation has tests.
 - [ ] Chapters 1 and 2 exist.
 - [ ] Ownership is introduced gently.
 

@@ -1,0 +1,19 @@
+[package]
+name = "focus_forge_cli"
+version = "0.1.0"
+edition.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "focus-forge"
+path = "src/main.rs"
+
+[dependencies]
+focus_forge_core = { path = "../focus_forge_core" }
+clap = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+assert_cmd = { workspace = true }
+predicates = { workspace = true }
+tempfile = { workspace = true }
