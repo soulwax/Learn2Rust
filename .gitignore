@@ -38,3 +38,6 @@ focus_forge.local.*.json
 Thumbs.db
 Desktop.ini
 
+
+.vercel
+.env*
