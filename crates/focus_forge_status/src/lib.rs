@@ -7,6 +7,7 @@ use std::path::Path;
 
 use thiserror::Error;
 
+mod cargo_meta;
 mod model;
 mod status_md;
 mod test_counts;
