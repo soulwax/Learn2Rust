@@ -7,12 +7,15 @@ Content-Security-Policy.
 
 ## Local development
 
+This project uses **pnpm** (pinned via the `packageManager` field in
+`package.json`).
+
 ```powershell
 cd site
-npm install
-npm run dev        # dev server at http://localhost:5173
-npm run build      # prerender to site/build/
-npm run preview    # serve the production build at http://localhost:4173/Learn2Rust/
+pnpm install
+pnpm dev           # dev server at http://localhost:5173
+pnpm build         # prerender to site/build/
+pnpm preview       # serve the production build at http://localhost:4173/Learn2Rust/
 ```
 
 ## Structure
@@ -42,7 +45,8 @@ site/
    Source → "GitHub Actions"**.
 3. The [Deploy site to GitHub Pages](../.github/workflows/pages.yml) workflow then
    runs on every push to `main` that touches `site/` (and on demand from the
-   **Actions** tab). It runs `npm ci && npm run build` and publishes `site/build`.
+   **Actions** tab). It runs `pnpm install --frozen-lockfile && pnpm build` and
+   publishes `site/build`.
 
 The site is published at:
 
