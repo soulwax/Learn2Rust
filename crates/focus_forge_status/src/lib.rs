@@ -9,6 +9,7 @@ use thiserror::Error;
 
 mod model;
 mod status_md;
+mod test_counts;
 
 #[derive(Debug, Error)]
 pub enum StatusError {
