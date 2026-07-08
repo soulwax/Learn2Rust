@@ -1,9 +1,8 @@
 # Learn2Rust site
 
 The Learn2Rust landing page — a **SvelteKit** app (Svelte 5) prerendered to fully
-static HTML/CSS/JS via `@sveltejs/adapter-static`, then deployed to GitHub Pages.
-No external fonts, scripts, or CDNs, so it works offline and inside a strict
-Content-Security-Policy.
+static HTML/CSS/JS via `@sveltejs/adapter-static`. No external fonts, scripts, or
+CDNs, so it works offline and inside a strict Content-Security-Policy.
 
 ## Local development
 
@@ -15,7 +14,7 @@ cd site
 pnpm install
 pnpm dev           # dev server at http://localhost:5173
 pnpm build         # prerender to site/build/
-pnpm preview       # serve the production build at http://localhost:4173/Learn2Rust/
+pnpm preview       # serve the production build
 ```
 
 ## Structure
@@ -33,36 +32,36 @@ site/
 │     ├─ +layout.js            # prerender = true
 │     ├─ +layout.svelte        # imports app.css
 │     └─ +page.svelte          # the landing page content
-├─ static/.nojekyll            # stops GitHub Pages stripping the _app/ dir
-├─ svelte.config.js            # adapter-static, base path /Learn2Rust
+├─ static/.nojekyll            # (only relevant to the GitHub Pages path)
+├─ vercel.json                 # Vercel: static build, output = build/
+├─ svelte.config.js            # adapter-static (served from domain root)
 └─ vite.config.js
 ```
 
-## Deploying to GitHub Pages (one time)
+## Deploying to Vercel (primary)
 
-1. Push `site/` and `.github/workflows/pages.yml` to `main`.
-2. In the repository on GitHub: **Settings → Pages → Build and deployment →
-   Source → "GitHub Actions"**.
-3. The [Deploy site to GitHub Pages](../.github/workflows/pages.yml) workflow then
-   runs on every push to `main` that touches `site/` (and on demand from the
-   **Actions** tab). It runs `pnpm install --frozen-lockfile && pnpm build` and
-   publishes `site/build`.
+The site deploys to Vercel via Git integration — no CLI needed, no GitHub Actions
+minutes used.
 
-The site is published at:
+1. At [vercel.com/new](https://vercel.com/new), import the `Learn2Rust` repo.
+2. Set **Root Directory** to `site` (the SvelteKit app lives in a subfolder).
+3. Vercel reads [`vercel.json`](vercel.json): build command `pnpm run build`,
+   output directory `build`. Leave the rest at defaults and deploy.
+4. Every push to `main` that touches `site/` then triggers an automatic
+   redeploy; pull requests get preview deployments.
 
-```
-https://soulwax.github.io/Learn2Rust/
-```
+Because the site is served from the domain root on Vercel, `svelte.config.js` sets
+no `paths.base`, and the static adapter emits relative asset paths.
 
-## Base path
+## Deploying to GitHub Pages (alternative)
 
-The site is served under `/Learn2Rust/`, so `svelte.config.js` sets
-`kit.paths.base` to `/Learn2Rust` for production builds (empty in dev). The static
-adapter emits relative asset paths, so the build works both at that subpath and if
-previewed locally.
+A GitHub Actions workflow ([`.github/workflows/pages.yml`](../.github/workflows/pages.yml))
+can publish the same build to `https://soulwax.github.io/Learn2Rust/`. Note that
+GitHub Pages serves the site under the `/Learn2Rust/` subpath, so if you use this
+path you must set `kit.paths.base` to `/Learn2Rust` in `svelte.config.js`. The
+`static/.nojekyll` file stops Pages from stripping the `_app/` directory.
 
 ## Editing
 
 Content lives in `src/routes/+page.svelte`; styling in `src/app.css`. Keep the page
-self-contained — do not add external asset URLs, or the strict Pages/CSP
-environment may block them.
+self-contained — do not add external asset URLs, or a strict host CSP may block them.
