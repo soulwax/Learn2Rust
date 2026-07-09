@@ -5,6 +5,7 @@ members = [
     "crates/focus_forge_cli",
     "crates/focus_forge_status",
     "labs/ch00_setup",
+    "labs/ch01_basics",
 ]
 
 [workspace.package]

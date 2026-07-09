@@ -9,7 +9,7 @@ The course builds one useful application over time: **Focus Forge**, a personal 
 The repository has completed the **Phase 0: Foundation** work and has a tested
 first Focus Forge product slice built ahead of the teaching track.
 
-Teaching progress is currently at **Chapter 0: Setup And First Run**.
+Teaching progress is currently at **Chapter 1: Variables, Functions, And Basic Types**.
 
 Already present:
 
@@ -23,13 +23,14 @@ Already present:
 - [x] First runnable setup lab
 - [x] VS Code extension recommendations and tasks
 - [x] Chapter 0 guide and assignment
+- [x] Chapter 1 guide, assignment, and runnable basics lab
 - [x] Focus Forge core crate
 - [x] Focus Forge CLI crate with project, task, and note commands
 - [x] Committed sample workspace data
 
 Coming next:
 
-- [ ] Chapters 1 and 2: Rust basics and ownership
+- [ ] Chapter 2: ownership, borrowing, and references
 - [ ] Workspace export/import slice
 
 ## Prerequisites
@@ -64,6 +65,7 @@ Run the first lab:
 cargo check
 cargo test
 cargo run -p ch00_setup
+cargo run -p ch01_basics
 ```
 
 Try giving it your name:
@@ -79,6 +81,7 @@ In VS Code, use **Terminal > Run Task...** for:
 - `cargo: fmt check`
 - `cargo: clippy workspace`
 - `run: ch00 setup lab`
+- `run: ch01 basics lab`
 
 ## Learning Shape
 

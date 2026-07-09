@@ -40,6 +40,14 @@
       "args": ["run", "-p", "ch00_setup"],
       "group": "build",
       "problemMatcher": "$rustc"
+    },
+    {
+      "label": "run: ch01 basics lab",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["run", "-p", "ch01_basics"],
+      "group": "build",
+      "problemMatcher": "$rustc"
     }
   ]
 }
