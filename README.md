@@ -6,7 +6,10 @@ The course builds one useful application over time: **Focus Forge**, a personal 
 
 ## Current State
 
-The repository is in **Phase 0: Foundation**.
+The repository has completed the **Phase 0: Foundation** work and has a tested
+first Focus Forge product slice built ahead of the teaching track.
+
+Teaching progress is currently at **Chapter 0: Setup And First Run**.
 
 Already present:
 
@@ -19,10 +22,15 @@ Already present:
 - [x] Initial Cargo workspace
 - [x] First runnable setup lab
 - [x] VS Code extension recommendations and tasks
+- [x] Chapter 0 guide and assignment
+- [x] Focus Forge core crate
+- [x] Focus Forge CLI crate with project, task, and note commands
+- [x] Committed sample workspace data
 
 Coming next:
 
-- [ ] Chapter 0 guide and assignment
+- [ ] Chapters 1 and 2: Rust basics and ownership
+- [ ] Workspace export/import slice
 
 ## Prerequisites
 

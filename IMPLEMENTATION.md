@@ -800,11 +800,11 @@ Do not mark a phase complete until its gate passes.
 
 ### Phase 1 Gate: First Feedback Loop
 
-- [ ] Chapter 0 can be completed in under ten minutes.
-- [ ] One test passes.
-- [ ] One deliberate compiler-error exercise exists.
-- [ ] VS Code check task works.
-- [ ] `STATUS.md` points to the next increment.
+- [x] Chapter 0 verification path can be completed in under ten minutes.
+- [x] One test passes.
+- [x] One deliberate compiler-error exercise exists.
+- [x] VS Code check task works.
+- [x] `STATUS.md` points to the next increment.
 
 ### Phase 2 Gate: First Product Slice
 
