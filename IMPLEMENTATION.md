@@ -812,8 +812,8 @@ Do not mark a phase complete until its gate passes.
 - [x] `focus_forge_cli` exists.
 - [x] CLI can print a project summary.
 - [x] Core validation has tests.
-- [ ] Chapters 1 and 2 exist.
-- [ ] Ownership is introduced gently.
+- [x] Chapters 1 and 2 exist.
+- [x] Ownership is introduced gently.
 
 ### Phase 3 Gate: Durable App Core
 

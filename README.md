@@ -9,7 +9,7 @@ The course builds one useful application over time: **Focus Forge**, a personal 
 The repository has completed the **Phase 0: Foundation** work and has a tested
 first Focus Forge product slice built ahead of the teaching track.
 
-Teaching progress is currently at **Chapter 1: Variables, Functions, And Basic Types**.
+Teaching progress is currently at **Chapter 2: Ownership, Borrowing, And References**.
 
 Already present:
 
@@ -24,13 +24,14 @@ Already present:
 - [x] VS Code extension recommendations and tasks
 - [x] Chapter 0 guide and assignment
 - [x] Chapter 1 guide, assignment, and runnable basics lab
+- [x] Chapter 2 guide, assignment, and runnable ownership lab
 - [x] Focus Forge core crate
 - [x] Focus Forge CLI crate with project, task, and note commands
 - [x] Committed sample workspace data
 
 Coming next:
 
-- [ ] Chapter 2: ownership, borrowing, and references
+- [ ] Chapter 3: structs, enums, and domain modeling
 - [ ] Workspace export/import slice
 
 ## Prerequisites
@@ -66,6 +67,7 @@ cargo check
 cargo test
 cargo run -p ch00_setup
 cargo run -p ch01_basics
+cargo run -p ch02_ownership
 ```
 
 Try giving it your name:
@@ -82,6 +84,7 @@ In VS Code, use **Terminal > Run Task...** for:
 - `cargo: clippy workspace`
 - `run: ch00 setup lab`
 - `run: ch01 basics lab`
+- `run: ch02 ownership lab`
 
 ## Learning Shape
 

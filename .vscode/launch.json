@@ -28,6 +28,20 @@
       },
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Debug ch02 ownership lab",
+      "type": "lldb",
+      "request": "launch",
+      "cargo": {
+        "args": ["build", "-p", "ch02_ownership"],
+        "filter": {
+          "name": "ch02_ownership",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
