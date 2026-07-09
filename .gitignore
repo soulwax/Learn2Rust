@@ -41,3 +41,7 @@ Desktop.ini
 
 .vercel
 .env*
+
+# Agent scratch state (progress ledgers, etc.) - not curriculum content
+.superpowers/
+.claude/

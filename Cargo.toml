@@ -3,6 +3,7 @@ resolver = "2"
 members = [
     "crates/focus_forge_core",
     "crates/focus_forge_cli",
+    "crates/focus_forge_status",
     "labs/ch00_setup",
 ]
 
