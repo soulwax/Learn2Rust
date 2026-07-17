@@ -1,6 +1,7 @@
 <script>
   import Header from '$lib/Header.svelte';
   import Footer from '$lib/Footer.svelte';
+  import StatusSection from '$lib/StatusSection.svelte';
 </script>
 
 <svelte:head>
@@ -119,18 +120,7 @@
       </div>
     </section>
 
-    <section id="status">
-      <h2>Where the course is now</h2>
-      <p class="sub">Learn2Rust grows in small, verified increments. Here's what's runnable today and what's next.</p>
-      <div class="pills">
-        <span class="pill on">✓ Chapter 0 — setup lab</span>
-        <span class="pill on">✓ focus_forge_core — domain crate</span>
-        <span class="pill on">✓ JSON persistence + sample data</span>
-        <span class="pill next">→ focus_forge_cli — command-line app</span>
-        <span class="pill">Chapters 1–2 — basics &amp; ownership</span>
-        <span class="pill">focus_forge_gui — desktop UI</span>
-      </div>
-    </section>
+    <StatusSection />
   </div>
 </main>
 

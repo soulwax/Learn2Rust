@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-07-17T17:59:46Z",
+  "last_commit": {
+    "hash": "d33ab03592ec654d4ffc95af0b83a05aed22a27b",
+    "date": "2026-07-09T16:07:10+02:00"
+  },
+  "phase": 2,
+  "phase_name": "First Product Slice",
+  "chapter": "ch02",
+  "chapter_name": "Ownership, Borrowing, And References",
+  "crates": [
+    {
+      "name": "focus_forge_core",
+      "kind": "crate",
+      "tests_passed": 24,
+      "tests_failed": 0
+    },
+    {
+      "name": "focus_forge_cli",
+      "kind": "crate",
+      "tests_passed": 25,
+      "tests_failed": 0
+    },
+    {
+      "name": "focus_forge_status",
+      "kind": "crate",
+      "tests_passed": 11,
+      "tests_failed": 0
+    },
+    {
+      "name": "ch00_setup",
+      "kind": "lab",
+      "tests_passed": 3,
+      "tests_failed": 0
+    },
+    {
+      "name": "ch01_basics",
+      "kind": "lab",
+      "tests_passed": 5,
+      "tests_failed": 0
+    },
+    {
+      "name": "ch02_ownership",
+      "kind": "lab",
+      "tests_passed": 5,
+      "tests_failed": 0
+    }
+  ]
+}
