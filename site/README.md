@@ -17,6 +17,25 @@ pnpm build         # prerender to site/build/
 pnpm preview       # serve the production build
 ```
 
+## Live status section
+
+The "Where the course is now" section is generated from the real repository, not
+hand-maintained. The `focus_forge_status` crate inspects the workspace (via `git`
+and `cargo`) and writes `site/static/status.json`; the site fetches it at load.
+
+`status.json` is a committed snapshot, so it updates only when regenerated. Refresh
+it (requires the Rust toolchain) before committing site changes if progress has
+moved on:
+
+```powershell
+cd site
+pnpm status:refresh   # runs: cargo run -p focus_forge_status
+```
+
+The Vercel build only runs `pnpm build` (no Rust toolchain), so it serves whatever
+`status.json` is committed — regeneration is a deliberate local step, not part of
+the deploy.
+
 ## Structure
 
 ```

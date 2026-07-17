@@ -74,7 +74,7 @@
     </div>
 
     <p class="status-meta">
-      Last commit <code class="inline">{shortHash}</code> · {commitDate} · snapshot {status.generated_at.slice(0, 10)}
+      Repo at <code class="inline">{shortHash}</code> (committed {commitDate}) · status captured {status.generated_at.slice(0, 10)}
     </p>
   {:else if failed}
     <!-- The page must never break if the snapshot is missing. -->
